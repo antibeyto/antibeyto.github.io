@@ -1,0 +1,25 @@
+/*----------------------------------------------
+*
+* [Theme Orange Stylesheet]
+*
+* Theme    : Orospu pazarı
+* Version  : 0
+* Author   : aarda
+* Support  : bit.ly/ardadasdelen
+* 
+----------------------------------------------*/
+
+/*----------------------------------------------
+Root
+----------------------------------------------*/
+
+/* #region Root */
+
+:root {
+    
+    --primary-color: #fc5130;
+    --secondary-color: #E0040B;
+    --aarda-color: #000000;
+}
+
+/* #endregion Root */
