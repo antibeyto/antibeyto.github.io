@@ -1064,7 +1064,7 @@ jQuery(function ($) {
             expiration: 1,
             domain: window.location.hostname,
             implicit: true,
-            statement: 'https://antibeyto.repl.co/dev',
+            statement: 'https://antibeyto.github.io/dev',
             performance: ['JSESSIONID'],
             analytics: ['ga'],
             marketing: ['SSID']
