@@ -1042,7 +1042,7 @@ jQuery(function ($) {
     if(cookieNotice) {
 
         gdprCookieNoticeLocales.en = {
-            description: 'Demo modu açık gerçek sitede değilsiniz!',
+            description: 'Daha iyi bir kullanıcı deneyimi için çereze ihtiyaç olmadığını kanıtlıyoruz.',
             settings: 'Ayarlar',
             accept: 'Kabul et',
             statement: 'Geliştirici',
